@@ -1,8 +1,9 @@
 
 import './App.css';
-import { PrimaryButton } from './components/atmos/PrimaryButton';
-import { SecondaryButton } from './components/atmos/SecondaryButton';
+import { PrimaryButton } from './components/atmos/bottun/PrimaryButton';
+import { SecondaryButton } from './components/atmos/bottun/SecondaryButton';
 import { SearchInput } from './components/molcules/SearchInput';
+import { UserCard } from './components/organisms/user/UserCard';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <SecondaryButton>検索</SecondaryButton>
       <br />
       <SearchInput/>
-    </div>
+      <UserCard/>
+    </div>    
   );
 }
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Input } from "../atmos/input/Input";
-import { PrimaryButton } from "../atmos/PrimaryButton"
+import { PrimaryButton } from "../atmos/bottun/PrimaryButton"
 
 export const SearchInput = () => {
   return (
