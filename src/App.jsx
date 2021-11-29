@@ -1,8 +1,11 @@
 
+import { BrowserRouter } from 'react-router-dom';
 import { PrimaryButton } from './components/atmos/bottun/PrimaryButton';
 import { SecondaryButton } from './components/atmos/bottun/SecondaryButton';
 import { SearchInput } from './components/molcules/SearchInput';
 import { UserCard } from './components/organisms/user/UserCard';
+import { DefaultLayout } from './components/templates/DefaultLayout';
+import { HeaderOnly } from './components/templates/HeaderOnly';
 
 const user = {
   name: "はやと",
@@ -17,13 +20,15 @@ const user = {
 
 function App() {
   return (
-    <div className="App">
-      <PrimaryButton>ハゲタコ</PrimaryButton>
-      <SecondaryButton>検索</SecondaryButton>
-      <br />
-      <SearchInput/>
-      <UserCard user={user}/>
-    </div>    
+    <BrowserRouter>
+      <DefaultLayout>
+        <PrimaryButton>ハゲタコ</PrimaryButton>
+        <SecondaryButton>検索</SecondaryButton>
+        <br />
+        <SearchInput/>
+        <UserCard user={user}/>
+      </DefaultLayout> 
+    </BrowserRouter>   
   );
 }
 
