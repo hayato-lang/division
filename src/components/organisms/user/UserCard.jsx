@@ -1,18 +1,35 @@
-export const UserCard = () => {
+import styled from "styled-components";
+import { Card } from "../../atmos/card/Card";
+import { UserIconWithName } from "../../molcules/user/UserIconWithName";
+
+export const UserCard = (props) => {
+  const { user } = props;
   return (
-    <div>
-      <img  alt="プロフィール" />
-      <p>名前</p>
-      <dl>
+    <Card>
+      <UserIconWithName name={user.name} image={user.image} />
+      <SDl>
         <dt>メール</dt>
-        <dd>hagetako@gmail.com</dd>
+        <dd>{user.email}</dd>
         <dt>Tel</dt>
-        <dd>080-1234-5678</dd>
+        <dd>{user.phone}</dd>
         <dt>会社名</dt>
-        <dd>株式会社ハゲタコ</dd>
+        <dd>{user.company.name}</dd>
         <dt>Webサイト</dt>
-        <dd>hagetako.com</dd>
-      </dl>
-    </div>
+        <dd>{user.website}</dd>
+      </SDl>
+    </Card>
   );
 }
+
+const SDl = styled.dl`
+text-align: left;
+margin-bottom: 0px;
+dt {
+  float: left;
+}
+dd {
+  padding-left: 32px;
+  padding-bottom: 8px;
+  overflow-wrap: break-word;
+}
+`;
