@@ -1,20 +1,25 @@
+import { useContext } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import {SecondaryButton} from "../atmos/bottun/SecondaryButton"
+import { UserContext } from "../../provider/UserProvider";
+import {SecondaryButton} from "../atoms/button/SecondaryButton"
 
 export const Top = () => {
   const history = useHistory();
-  const onClickAdmin = () => 
-  history.push({pathname:"/users", state:{isAdmin: true}});
-  const onClickGeneral = () => 
-  history.push({pathname:"/users", state:{isAdmin: false}});
+  const {setUserInfo} = useContext(UserContext);
+  const onClickAdmin = () => {
+  setUserInfo({isAdmin: true});
+  history.push("/users")};
+  const onClickGeneral = () => {
+  setUserInfo({isAdmin: false}); 
+  history.push("/users")};
   return (
     <SContainer>
       <h2>HOMEです</h2>
-      <SecondaryButton onClick={onClickAdmin}>一般ユーザー</SecondaryButton>
+      <SecondaryButton onClick={onClickGeneral}>一般ユーザー</SecondaryButton>
       <br />
       <br />
-      <SecondaryButton onClick={onClickGeneral}>管理者ユーザー</SecondaryButton>
+      <SecondaryButton onClick={onClickAdmin}>管理者ユーザー</SecondaryButton>
     </SContainer>
   );
 }
