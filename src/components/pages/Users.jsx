@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import {SearchInput} from "../molcules/SearchInput";
 import {UserCard} from "../organisms/user/UserCard";
+import { SecondaryButton } from "../atoms/button/SecondaryButton";
+import { UserContext } from "../../provider/UserProvider";
+import { useContext } from "react";
 
 const users = [...Array(10).keys()].map(((val) => {
   return {
@@ -18,10 +21,15 @@ const users = [...Array(10).keys()].map(((val) => {
 
 
 export const Users = () => {
+  const {userInfo, setUserInfo} = useContext(UserContext);
+  const onClickChange = () => setUserInfo({isAdmin: !userInfo.isAdmin});
+
   return (
     <SContainer>
       <h2>ユーザー一覧です</h2>
       <SearchInput/>
+      <br />
+      <SecondaryButton onClick={onClickChange}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
@@ -29,7 +37,7 @@ export const Users = () => {
       </SUserArea>
     </SContainer>
   );
-}
+};
 
 const SContainer = styled.div`
 display: flex;
